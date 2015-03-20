@@ -56,11 +56,17 @@ class Admin::UsersController < Admin::BaseController
   def user_params
     params.require(:user).permit(
     :email,
+    :name,
+    :phone,
+    :condo_id,
     :password,
     :password_confirmation,
     :admin,
     :locked
     )
+  end
+  def condo_params
+   params.require(:condo).permit(:address)
   end
 
 end

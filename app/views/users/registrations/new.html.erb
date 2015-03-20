@@ -2,7 +2,9 @@
   <div class="col-sm-6">
     <h1>Sign up</h1>
 
-    <%= form_for([resource, resource.with_condo], :as => resource_name,
+    <% resource.build_condo if resource.condo.nil? %>
+<!--     <% resource.build_condo %>
+ -->    <%= form_for(resource, :as => resource_name,
     :url => registration_path(resource_name),
     :html => { :role => "form" }) do |f| %>
 
@@ -53,13 +55,14 @@
       </div>
     </div>
 
-    <%= f.fields_for :condos do |condo| %>
 
-    <p><%= condo.label :address %><br />
-      <%= condo.text_field :address %></p>
+    <%= f.fields_for :condo do |condo_form| %>
+      <h2><%= condo_form.label :address %></h2>
+      <p><%= condo_form.text_field :address %></p>
+
+    <% end %>
 
 
-  <% end %>
 
     <div class="row">
       <div class="col-sm-6">

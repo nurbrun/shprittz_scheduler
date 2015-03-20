@@ -1,9 +1,17 @@
 class User < ActiveRecord::Base
+
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  :recoverable, :rememberable, :trackable, :validatable
+  # , :confirmable
+
+  belongs_to :condo
+  accepts_nested_attributes_for :condo, :allow_destroy => true
+
+
+  # accepts_nested_attributes_for :condo
   
   # Pagination
   paginates_per 100
@@ -38,4 +46,9 @@ class User < ActiveRecord::Base
   def self.users_count
     where("admin = ? AND locked = ?",false,false).count
   end
+
+  # def with_condo
+  # self.condo
+  # self
+  # end
 end

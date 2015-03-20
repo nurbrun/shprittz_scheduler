@@ -25,10 +25,11 @@ gem 'font-awesome-sass', '4.2.2'
 
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '3.3.3'
-
+gem 'favorite_things'
 group :development, :test do
   gem 'byebug', '3.5.1'
   gem 'web-console', '2.0.0'
+  #gem 'pry-rails'
 
   # Figaro: https://github.com/laserlemon/figaro
   gem 'figaro', '1.0.0'
