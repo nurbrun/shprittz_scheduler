@@ -6,15 +6,42 @@ skip_before_filter :require_no_authentication, only: :create
 
 def new
     build_resource({})
-    resource.build_condo
-    respond_with self.resource 
-  # super
+    resource.condo = Condo.new
+    respond_with self.resource
 end
 
 def create
-  super
-  resource.condo = Condo.where(:address => params[:user][:condo_attributes][:address]).first_or_create 
-end
+    build_resource(sign_up_params)
+
+# Cando portion
+    if Condo.find_by(:address => params[:user][:condo_attributes][:address])
+      assignusertocondo = Condo.find_by(:address => params[:user][:condo_attributes][:address])
+      assignusertocondo.users << resource
+    end
+    resource.condo = Condo.find_or_initialize_by(:address => params[:user][:condo_attributes][:address])
+# End of Cando portion
+
+    resource_saved = resource.save
+    yield resource if block_given?
+    if resource_saved
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      @validatable = devise_mapping.validatable?
+      if @validatable
+        @minimum_password_length = resource_class.password_length.min
+      end
+      respond_with resource
+    end
+  end
 
   # GET /resource/sign_up
   # def new
@@ -55,7 +82,7 @@ end
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) { |u|
-      u.permit(:email, :name, :phone, :condo_id, :password, :password_confirmation, :condo_attributes => [:address, :postal_code, :suite, :parking_spot, :user_id])
+      u.permit(:email, :name, :phone, :postal_code, :parking_spot, :suite, :condo_id, :password, :password_confirmation)
     }
   end
 
@@ -76,6 +103,9 @@ end
   private
 
   def resource_params
-    params.require(:user).permit(:name, :email, :condo_id, :phone, :name, :password, :password_confirmation) 
+    params.require(:user).permit(:name, :email, :condo_id, :phone, :name, :postal_code, :parking_spot, :suite, :password, :password_confirmation) 
+  end 
+  def condo_params
+    params.require(:condo).permit(:address, :postal_code, :parking_spot, :suite) 
   end 
 end
