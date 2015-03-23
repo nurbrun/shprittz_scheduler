@@ -1,0 +1,13 @@
+<h1><%= @condo.address %></h1>
+<br>
+<% if @condo.users %>
+<% @condo.users.each do |user| %>
+<p>Tennant Name: <%= user.name %></p>
+<% if user.suite %>
+<p>Suite No: <%= user.suite %></p>
+<% end %>
+<% if user.parking_spot %>
+<p>Parking Spot No: <%= user.parking_spot %></p>
+<% end %>
+<% end %>
+<% end %>
