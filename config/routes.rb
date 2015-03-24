@@ -1,4 +1,6 @@
 ShprittzScheduler::Application.routes.draw do
+  get 'appointments/create'
+
   get 'condos/new'
 
   root "pages#home"
@@ -14,6 +16,10 @@ ShprittzScheduler::Application.routes.draw do
 
 
   get "condo/:id", to: "condos#show", as: "condo"
+
+  resources :condos do
+    resources :appointments
+  end
 
 
   namespace :admin do

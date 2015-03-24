@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   # , :confirmable
 
   belongs_to :condo
+  has_many :appointments
+  
   accepts_nested_attributes_for :condo, :allow_destroy => true
 
 

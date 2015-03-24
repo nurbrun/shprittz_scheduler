@@ -11,16 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322224803) do
+ActiveRecord::Schema.define(version: 20150324214649) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.date     "date"
+    t.string   "wash_type"
+    t.integer  "user_id"
+    t.integer  "condo_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "inside_only"
+    t.string   "inside_and_outside"
+    t.string   "outside_only"
+  end
 
   create_table "condos", force: :cascade do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "address"
     t.string   "postal_code"
     t.string   "suite"
     t.string   "parking_spot"
     t.integer  "user_id"
+    t.integer  "appointment_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -61,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150322224803) do
     t.string   "suite"
     t.string   "parking_spot"
     t.string   "postal_code"
+    t.integer  "appointment_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

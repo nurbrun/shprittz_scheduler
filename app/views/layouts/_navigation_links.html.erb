@@ -6,7 +6,10 @@
 <li><%= link_to "Sign up", new_user_registration_path %></li>
  -->
 <% else %>
-<li><%= link_to "Protected Page", inside_path %></li>
+<% if current_user %>
+<li><%= link_to "My Condo", condo_path(current_user.condo.address) %></li>
+<% end %>
+
 <li><%= link_to "Edit your account", edit_user_registration_path %></li>
 
 <% if current_user.admin? %>

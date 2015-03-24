@@ -8,7 +8,7 @@ u = User.new(
     password_confirmation: "1234",
     admin: true
 )
-u.skip_confirmation!
+# u.skip_confirmation!
 u.save!
 
 # Test user accounts
@@ -18,7 +18,7 @@ u.save!
       password: "1234",
       password_confirmation: "1234"
   )
-  u.skip_confirmation!
+  # u.skip_confirmation!
   u.save!
 
   puts "#{i} test users created..." if (i % 5 == 0)
