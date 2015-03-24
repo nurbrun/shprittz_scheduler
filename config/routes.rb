@@ -13,6 +13,9 @@ ShprittzScheduler::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
 
+  get "condo/:id", to: "condos#show", as: "condo"
+
+
   namespace :admin do
     root "base#index"
     resources :users
