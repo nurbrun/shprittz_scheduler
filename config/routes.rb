@@ -27,7 +27,9 @@ ShprittzScheduler::Application.routes.draw do
   namespace :admin do
     root "base#index"
     resources :users
-    resources :condos
+    resources :condos do 
+      resources :appointments
+    end
   end
 
 end

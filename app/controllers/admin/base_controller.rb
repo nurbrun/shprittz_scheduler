@@ -6,6 +6,7 @@ class Admin::BaseController < ApplicationController
     @last_signins = User.last_signins(10)
     @count = User.users_count
     @condos = Condo.all
-    @users = User.all  
+    @users = User.all
+    @condoscount = Condo.all.count  
   end
 end

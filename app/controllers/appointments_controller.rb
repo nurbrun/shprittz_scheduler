@@ -26,7 +26,7 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
-    @appointment.update_attributes(:date => params[:date])
+    @appointment.update_attributes(appointment_params)
 
     if @appointment.update_attributes(appointment_params)
       flash[:success] = "Appointment updated"
