@@ -1,0 +1,21 @@
+<br>
+<h2>Appointment History:</h2>
+<br>
+<% @appointments.reverse.each do |appointment| %>
+<div class="thumbnail" id="home-nurbrun" style="display:inline-block;">
+
+<% if appointment.inside_and_outside.to_i > appointment.inside_only.to_i || appointment.inside_and_outside.to_i > appointment.outside_only.to_i %>
+    <p><%= appointment.date %></p>
+    <p>Inside and Outside ($28.95)</p>
+    <% end %>
+  <% if appointment.inside_only.to_i > appointment.inside_and_outside.to_i || appointment.inside_only.to_i > appointment.outside_only.to_i %>
+    <p><%= appointment.date %></p>
+    <p>Outside only ($18.95)</p>
+    <% end %>
+  <% if appointment.outside_only.to_i > appointment.inside_and_outside.to_i || appointment.outside_only.to_i > appointment.inside_only.to_i %>
+    <p><%= appointment.date %></p>
+    <p>Outside only ($15.95)</p>
+    <% end %>
+<%= link_to 'Edit', edit_condo_appointment_path(@condo.id, appointment.id) %>
+</div>
+<% end %>

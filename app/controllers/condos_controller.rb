@@ -12,5 +12,9 @@ class CondosController < ApplicationController
     else
     end
 
+    if current_user.appointments.count
+      @appointments_last_three = current_user.appointments.last(3).reverse
+    end
+
   end
 end

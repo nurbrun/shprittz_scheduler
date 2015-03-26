@@ -1,6 +1,15 @@
 class AppointmentsController < ApplicationController
   before_filter :load_condo
 
+  def index
+    if current_user.appointments.count
+      @appointments = current_user.appointments.all
+    else
+      render 'go home'
+    end
+  end
+
+
   def create
     @appointment = @condo.appointments.build(appointment_params)
   
@@ -9,6 +18,23 @@ class AppointmentsController < ApplicationController
       else
         render 'condo/#{<%= condo.id %>}'
       end
+  end
+
+  def edit
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def update
+    @appointment = Appointment.find(params[:id])
+    @appointment.update_attributes(:date => params[:date])
+
+    if @appointment.update_attributes(appointment_params)
+      flash[:success] = "Appointment updated"
+      render 'edit'
+    else
+      render 'edit'
+    end
+
   end
   private
 

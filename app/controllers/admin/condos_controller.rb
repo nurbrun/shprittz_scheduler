@@ -6,7 +6,7 @@ class Admin::CondosController < ApplicationController
   end
 
   def show
-    @condo = Condo.find(params[:id])
+    @condo = Condo.find_by_address(params[:id])
   end
 
 end

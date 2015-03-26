@@ -1,5 +1,6 @@
 
-<h1>Make an appointment<small> <%= @condo.address %></small></h1>
+<h1>Make an appointment</h1>
+<h1><small> <%= @condo.address %></small></h1>
 <br>
 <%= form_for([@condo, @appointment]) do |f| %>
   <div class="field">
@@ -8,15 +9,9 @@
     <%= f.date_select :date %>
   </div>
   <br>
-<!--   <div class="field">
-    <%= f.label :wash_type %>
-    <br/>
-    <%= f.text_area :wash_type %>
-  </div> -->
-
-
 
 <div class= "input", id="boxes">
+<h5>Please select one</h5>
               <p>Outside only ($18.95): <%= f.check_box(:inside_only) %></p>
               <p>Inside and Outside ($28.95): <%= f.check_box(:inside_and_outside) %></p>
               <p>Inside only ($15.95): <%= f.check_box(:outside_only) %></p>
@@ -50,8 +45,17 @@
 <br/>
 
 <% if current_user.appointments.any? %>
-<h3>My appointments: </h3>
-<% current_user.appointments.each do |appointment| %>
+<h4>My most recent appointments: </h4>
+<% @appointments_last_three.each do |appointment| %>
   <p><%= appointment.date %></p>
+  <% if appointment.inside_and_outside.to_i > appointment.inside_only.to_i || appointment.inside_and_outside.to_i > appointment.outside_only.to_i %>
+    <p>Inside and Outside ($28.95)</p>
+    <% end %>
+  <% if appointment.inside_only.to_i > appointment.inside_and_outside.to_i || appointment.inside_only.to_i > appointment.outside_only.to_i %>
+    <p>Outside only ($18.95)</p>
+    <% end %>
+  <% if appointment.outside_only.to_i > appointment.inside_and_outside.to_i || appointment.outside_only.to_i > appointment.inside_only.to_i %>
+    <p>Outside only ($15.95)</p>
+    <% end %>
   <% end %>
   <% end %>

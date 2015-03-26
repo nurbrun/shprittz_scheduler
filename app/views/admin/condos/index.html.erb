@@ -1,5 +1,6 @@
 <% @condos.each do |condo| %>
-<p><%= condo.address %></p>
+<h3><%= condo.address %></h3>
 Number of residents using app: <%= condo.users.count %>
 <%= link_to 'show', admin_condo_path(condo) %> 
+<p>Number of appointments: <%= condo.appointments.count %></p>
 <% end %>

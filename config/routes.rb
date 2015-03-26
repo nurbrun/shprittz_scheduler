@@ -17,6 +17,8 @@ ShprittzScheduler::Application.routes.draw do
 
   get "condo/:id", to: "condos#show", as: "condo"
 
+  resources :appointments, only: [:edit, :update, :destroy] 
+
   resources :condos do
     resources :appointments
   end

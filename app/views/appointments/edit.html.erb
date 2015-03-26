@@ -1,0 +1,36 @@
+<% if @appointment.user = current_user %>
+
+<%= form_for(@appointment) do |m| %>
+
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+      <% @appointment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      <% end %>
+
+
+ <div class="field">
+   <%= m.label :date %><br />
+   <%= m.date_field :date %>
+ </div>
+ <div class= "input", id="boxes">
+<h5>Please select one</h5>
+              <p>Outside only ($18.95): <%= m.check_box(:inside_only) %></p>
+              <p>Inside and Outside ($28.95): <%= m.check_box(:inside_and_outside) %></p>
+              <p>Inside only ($15.95): <%= m.check_box(:outside_only) %></p>
+              
+            </div>
+ 
+
+ <div class="actions">
+   <%= m.submit %>
+ </div>
+ <% end %>
+
+ <% else %>
+ <h1>Go home</h1>
+ <% end %>

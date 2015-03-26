@@ -6,8 +6,11 @@
 <li><%= link_to "Sign up", new_user_registration_path %></li>
  -->
 <% else %>
-<% if current_user %>
+<% if current_user && current_user.condo %>
 <li><%= link_to "My Condo", condo_path(current_user.condo.address) %></li>
+<% if current_user.appointments.count %>
+<li><%= link_to "My Appointments", condo_appointments_path(current_user.condo.address) %></li>
+<% end %>
 <% end %>
 
 <li><%= link_to "Edit your account", edit_user_registration_path %></li>
