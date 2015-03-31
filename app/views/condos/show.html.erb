@@ -15,52 +15,15 @@ $(document).ready(function(){
     
    });     
 </script>
-<!-- 
-<script type="text/javascript">
-$(document).ready(function(){
-   $(".datepicker").datepicker({
-      clearBtn: true,
-     todayHighlight: true   
-    }).datepicker("setDate",  new Date());   
-</script>
-
- -->
-
-
-
-<!-- 
-  <div class="form-group">
-    <%= f.label :date %>
-    <br/>
-   <%= f.text_field :date, :class => 'datepicker' %>
-  </div>
-
-
-  <script type="text/javascript">
-  $(document).ready(function(){
-    $('.datepicker').datepicker({
-      clearBtn: true,
-    todayHighlight: true,
-  });
-  });
-  $('.input-group.date').datepicker({
-    clearBtn: true,
-    todayHighlight: true,
-    todayBtn: true
-});
-</script>
-
- -->  
 
  <br>
 
 <div class= "input", id="boxes">
-<h5>Please select one</h5>
-              <p>Outside only ($18.95): <%= f.check_box(:inside_only) %></p>
-              <p>Inside and Outside ($28.95): <%= f.check_box(:inside_and_outside) %></p>
-              <p>Inside only ($15.95): <%= f.check_box(:outside_only) %></p>
-              
-            </div>
+  <h5>Please select one</h5>
+    <p>Outside only ($18.95): <%= f.check_box(:inside_only) %></p>
+    <p>Inside and Outside ($28.95): <%= f.check_box(:inside_and_outside) %></p>
+    <p>Inside only ($15.95): <%= f.check_box(:outside_only) %></p>              
+</div>
 
   <div class="field">
     <% if current_user %>
