@@ -81,7 +81,7 @@ ShprittzScheduler::Application.configure do
   # Mailer
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'shprittzscheduler.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'afternoon-brook-2239.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
