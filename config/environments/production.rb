@@ -83,13 +83,13 @@ ShprittzScheduler::Application.configure do
   config.action_mailer.default_url_options = { :host => 'afternoon-brook-2239.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'gmail.com',
-    authentication: 'plain',
-    enable_starttls_auto: true,
-    user_name: ENV["EMAIL"],
-    password: ENV["PASSWORD"]
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.gmail.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['EMAIL'],
+    :password       => ENV['PASSWORD'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
   }
 end
