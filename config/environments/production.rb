@@ -89,7 +89,7 @@ ShprittzScheduler::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['EMAIL'],
     :password       => ENV['PASSWORD'],
-    :domain         => 'heroku.com',
+    :domain         => 'afternoon-brook-2239.heroku.com',
     :enable_starttls_auto => true
   }
 end

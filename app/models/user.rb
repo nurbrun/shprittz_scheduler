@@ -48,8 +48,4 @@ class User < ActiveRecord::Base
     where("admin = ? AND locked = ?",false,false).count
   end
 
-  # def with_condo
-  # self.condo
-  # self
-  # end
 end
