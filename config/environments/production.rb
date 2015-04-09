@@ -89,7 +89,7 @@ ShprittzScheduler::Application.configure do
     domain: 'gmail.com',
     authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: 'shprittzmailer@gmail.com',
-    password: 'asdqwe123qweasd'
+    user_name: ENV["EMAIL"],
+    password: ENV["PASSWORD"]
   }
 end
