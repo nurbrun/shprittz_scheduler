@@ -80,7 +80,7 @@ ShprittzScheduler::Application.configure do
 
   # Mailer
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'afternoon-brook-2239.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'afternoon-brook-2239.herokuapp.com', :protocol => 'http' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   ActionMailer::Base.smtp_settings = {
@@ -89,7 +89,7 @@ ShprittzScheduler::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['EMAIL'],
     :password       => ENV['PASSWORD'],
-    :domain         => 'afternoon-brook-2239.heroku.com',
+    :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
 end
