@@ -62,9 +62,14 @@
 <div class="col-md-6 column" style="display:inline-block;">
 
     <%= f.fields_for :condo do |condo_form| %>
-      <h2><%= condo_form.label :address %></h2>
-      <p><%= condo_form.text_field :address %></p>
-
+    <div class="form-group">
+      <%= condo_form.label :address %>
+      <div class="row">
+        <div class="col-sm-6">
+      <p><%= condo_form.text_field :address, class: "form-control"  %></p>
+        </div>
+        </div>
+    </div>
     <% end %>
 
     <div class="form-group">
