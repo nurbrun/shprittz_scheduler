@@ -53,9 +53,10 @@ group :production do
 end
 
 # PostgreSQL gem for Heroku
-group :production do
-  gem 'pg'
-end
+# group :production do
+#   gem 'pg'
+# end
+gem 'pg'
 
 # Unicorn: http://unicorn.bogomips.org
 group :production do
