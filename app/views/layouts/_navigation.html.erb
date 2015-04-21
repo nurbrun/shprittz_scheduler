@@ -7,8 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <% if current_user && current_user.condo %>
+      <%= link_to "Book Wash", condo_path(current_user.condo.address), class: 'navbar-brand'  %>
+      <% else %>
       <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-    </div>
+      <% end %>
+   </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>

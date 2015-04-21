@@ -6,7 +6,6 @@
 # Can be uncommented if really necessary.
 # /.bundle
 
-# Ignore the bundle directory itself.
 /vendor/bundle
 /public/assets
 

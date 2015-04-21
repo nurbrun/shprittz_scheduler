@@ -1,6 +1,10 @@
+<li><%= link_to "Services", services_path %></li>
+
+<% if !user_signed_in? %>
 
 <li><%= link_to "Contact", contact_path %></li>
-<li><%= link_to "Services", services_path %></li>
+<% end %>
+
 <% if !user_signed_in? %>
 
 <!-- <li><%= link_to "Sign in", new_user_session_path %></li>
@@ -8,7 +12,7 @@
  -->
 <% else %>
 <% if current_user && current_user.condo %>
-<li><%= link_to "My Condo", condo_path(current_user.condo.address) %></li>
+
 <% if current_user.appointments.count %>
 <li><%= link_to "My Appointments", condo_appointments_path(current_user.condo.address) %></li>
 <% end %>
@@ -19,6 +23,7 @@
 <% if current_user.admin? %>
 <li><%= link_to "Admin", admin_root_path %></li>
 <% end %>
+<li><%= link_to "Contact", contact_path %></li>
 
 <li><%= link_to "Sign out", destroy_user_session_path, data:{method: :delete} %></li>
 <% end %>
