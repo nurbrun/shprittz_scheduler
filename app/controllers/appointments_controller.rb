@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     @appointment = @condo.appointments.build(appointment_params)
   
       if @appointment.save
-        redirect_to condo_path(@condo.address), notice: 'Appointment booked successfully'
+        redirect_to condo_path(@condo.address), notice: 'Handwash booked successfully. Please drop your keys off at the Shrpittz key dropbox before 9pm tonight.'
       else
         render 'condo/#{<%= condo.id %>}'
       end
@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
 
   def edit
     @appointment = Appointment.find(params[:id])
-  end
+  end 
 
   def update
     @appointment = Appointment.find(params[:id])
