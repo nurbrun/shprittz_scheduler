@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324214649) do
+ActiveRecord::Schema.define(version: 20150424185751) do
 
   create_table "appointments", force: :cascade do |t|
     t.date     "date"
@@ -72,9 +72,11 @@ ActiveRecord::Schema.define(version: 20150324214649) do
     t.string   "phone"
     t.integer  "condo_id"
     t.string   "suite"
-    t.string   "parking_spot"
+    t.string   "parking_number"
     t.string   "postal_code"
     t.integer  "appointment_id"
+    t.string   "city"
+    t.string   "parking_level"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

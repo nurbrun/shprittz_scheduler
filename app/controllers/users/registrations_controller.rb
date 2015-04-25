@@ -3,6 +3,7 @@ before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
 skip_before_filter :require_no_authentication, only: :create
+skip_before_filter :verify_authenticity_token, :only => :create
 
 def new
     build_resource({})
@@ -82,7 +83,7 @@ def create
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) { |u|
-      u.permit(:email, :name, :phone, :postal_code, :parking_spot, :suite, :condo_id, :password, :password_confirmation)
+      u.permit(:email, :name, :phone, :postal_code, :parking_number, :parking_level, :city, :suite, :condo_id, :password, :password_confirmation)
     }
   end
 
@@ -103,9 +104,9 @@ def create
   private
 
   def resource_params
-    params.require(:user).permit(:name, :email, :condo_id, :phone, :name, :postal_code, :parking_spot, :suite, :password, :password_confirmation) 
+    params.require(:user).permit(:name, :email, :condo_id, :phone, :name, :postal_code, :parking_number, :parking_level, :city, :suite, :password, :password_confirmation) 
   end 
   def condo_params
-    params.require(:condo).permit(:address, :postal_code, :parking_spot, :suite) 
+    params.require(:condo).permit(:address, :postal_code, :parking_number, :parking_level, :city, :suite) 
   end 
 end

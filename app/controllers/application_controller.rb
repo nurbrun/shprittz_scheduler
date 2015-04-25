@@ -14,12 +14,14 @@ class ApplicationController < ActionController::Base
       :phone,
       :name,
       :postal_code,
-      :parking_spot,
+      :parking_number,
+      :parking_level,
+      :city,
       :suite,
       :condo_id,
       :password,
       :password_confirmation,
-      :condo_attributes => [:address, :postal_code, :suite, :parking_spot, :user_id]
+      :condo_attributes => [:address, :postal_code, :suite, :city, :parking_number, :parking_level, :user_id]
       )
     }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(
@@ -27,13 +29,15 @@ class ApplicationController < ActionController::Base
       :phone,
       :name,
       :postal_code,
-      :parking_spot,
+      :parking_number,
+      :parking_level,
+      :city,
       :suite,
       :condo_id,
       :password,
       :password_confirmation,
       :current_password,
-      :condo_attributes => [:address, :postal_code, :suite, :parking_spot, :user_id]
+      :condo_attributes => [:address, :postal_code, :suite, :city, :parking_number, :parking_level, :user_id]
       )
     }
   end

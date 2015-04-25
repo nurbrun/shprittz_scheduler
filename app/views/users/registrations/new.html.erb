@@ -1,116 +1,109 @@
 <div class="row">
-  <div class="col-sm-12">
-    <h1>Sign up</h1>
+<!--   <div class="col-sm-12">
+ -->  <div class="col-md-8 col-md-offset-2 text-center">
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => "form" }) do |f| %>
 
     <%= devise_error_messages! %>
 
-<div class="col-md-6 column" style="display:inline-block;">
-    <div class="form-group">
-      <%= f.label :email %>
-      <div class="row">
-        <div class="col-md-6 column">
-          <%= f.email_field :email, class: "form-control" %>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Member Registration</h3>
+        <p class="form-description">Register now and have a wash professional clean your vehicle overnight. </p>
     </div>
-
-    <div class="form-group">
-      <%= f.label :name %>
+    <div class="col-md-12">
       <div class="row">
         <div class="col-sm-6">
-          <%= f.text_field :name, class: "form-control" %>
+          <div class="form-group">
+            <%= f.label :email, class: "sr-only" %>
+            <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :name, class: "sr-only" %>
+            <%= f.text_field :name, class: "form-control", placeholder: "Full Name" %>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :phone %>
       <div class="row">
         <div class="col-sm-6">
-          <%= f.text_field :phone, class: "form-control" %>
+          <div class="form-group">
+          <%= f.fields_for :condo do |condo_form| %>
+            <%= condo_form.label :address, class: "sr-only" %>
+            <%= condo_form.text_field :address, class: "form-control", placeholder: "Address" %>
+          <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :postal_code, class: "sr-only" %>
+            <%= f.text_field :postal_code, class: "form-control", placeholder: "Postal Code" %>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="form-group">
       <div class="row">
         <div class="col-sm-6">
-          <%= f.label :password %>
-          <%= f.password_field :password, class: "form-control" %>
+          <div class="form-group">
+            <%= f.label :city, class: "sr-only" %>
+            <%= f.text_field :city, class: "form-control", placeholder: "City" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :suite, class: "sr-only" %>
+            <%= f.text_field :suite, class: "form-control", placeholder: "Suite Number" %>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :parking_number, class: "sr-only" %>
+            <%= f.text_field :parking_number, class: "form-control", placeholder: "Parking Spot Number" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :parking_level, class: "sr-only" %>
+            <%= f.text_field :parking_level, class: "form-control", placeholder: "Parking Level" %>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="form-group">
       <div class="row">
         <div class="col-sm-6">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: "form-control" %>
+          <div class="form-group">
+            <%= f.label :password, class: "sr-only" %>
+            <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :password_confirmation, class: "sr-only" %>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+          </div>
         </div>
       </div>
-    </div>
 
-</div>
-
-
-<div class="col-md-6 column" style="display:inline-block;">
-
-    <%= f.fields_for :condo do |condo_form| %>
-    <div class="form-group">
-      <%= condo_form.label :address %>
-      <div class="row">
-        <div class="col-sm-6">
-      <p><%= condo_form.text_field :address, class: "form-control"  %></p>
-        </div>
-        </div>
-    </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label :postal_code %>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= f.text_field :postal_code, class: "form-control" %>
-        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :suite %>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= f.text_field :suite, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :parking_spot %>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= f.text_field :parking_spot, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+    
     <div class="row">
-      <div class="col-sm-6">
-        <%= f.submit "Sign up", class: "btn btn-primary" %>
-      </div>
-
-      <div class="col-sm-6" style="margin-top:1em;">
+      <div class="col-sm-10" style="margin-top:1em;">
       <%= render "devise/shared/links" %>
       </div>
+
+      <div class="col-sm-2" style="margin-top:1em;">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+      </div>
     </div>
-    <% end %>
 
+<% end %>
 
-    
-
-  </div>
 </div>
+
+</div>
+</div>
+
+
 
