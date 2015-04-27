@@ -5,9 +5,9 @@
 <%= form_for([@condo, @appointment]) do |f| %>
 
 
-<div class="input-append date datepicker" data-date-format="dd-mm-yyyy">
-    <%= f.text_field :date, 'data-behaviour' => 'datepicker', :enabled => 'enable' %>
-    <span class="add-on"><i class="icon-th"></i></span>
+<div class="input-group date datepicker" data-date-format="dd-mm-yyyy">
+    <%= f.text_field :date, 'data-behaviour' => 'datepicker', :enabled => 'enable', :class => 'form-control datepicker'%>
+    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 </div>
 
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
  <br>
 
 <div class= "input", id="boxes">
-  <h5>Please select one</h5>
+  <h4>Please select one</h4>
     <p>Outside only ($18.95): <%= f.check_box(:inside_only) %></p>
     <p>Inside and Outside ($28.95): <%= f.check_box(:inside_and_outside) %></p>
     <p>Inside only ($15.95): <%= f.check_box(:outside_only) %></p>              
@@ -53,9 +53,10 @@ $(document).ready(function(){
   </div>
 <% end %>
 <br/>
-
+<br/>
+<br/>
 <% if current_user.appointments.any? %>
-<h4>My most recent appointments: </h4>
+<h5>My most recent appointments: </h5>
 <% @appointments_last_three.each do |appointment| %>
   <p><%= appointment.date %></p>
   <% if appointment.inside_and_outside.to_i > appointment.inside_only.to_i || appointment.inside_and_outside.to_i > appointment.outside_only.to_i %>
