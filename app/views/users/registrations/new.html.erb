@@ -29,6 +29,20 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
+            <%= f.label :city, class: "sr-only" %>
+            <%= f.text_field :city, class: "form-control", placeholder: "City" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :phone, class: "sr-only" %>
+            <%= f.text_field :phone, class: "form-control", placeholder: "Phone" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
           <%= f.fields_for :condo do |condo_form| %>
             <%= condo_form.label :address, class: "sr-only" %>
             <%= condo_form.text_field :address, class: "form-control", placeholder: "Address" %>
@@ -45,19 +59,10 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.label :city, class: "sr-only" %>
-            <%= f.text_field :city, class: "form-control", placeholder: "City" %>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="form-group">
             <%= f.label :suite, class: "sr-only" %>
             <%= f.text_field :suite, class: "form-control", placeholder: "Suite Number" %>
           </div>
         </div>
-        
-      </div>
-      <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
             <%= f.label :parking_number, class: "sr-only" %>
